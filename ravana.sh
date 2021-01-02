@@ -274,7 +274,7 @@ case $optn in
 	14)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting fake instagram follower server"
-		server fake_ig;;
+		server ig_follower;;
 	15)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting yandex server"
