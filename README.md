@@ -33,7 +33,8 @@ chmod +x ravana.sh
  
  
  
-![20201201_095152](https://user-images.githubusercontent.com/56459297/103227559-a76dbf00-4954-11eb-8822-23926d5b48d4.jpg)
+
+![20210202_064927](https://user-images.githubusercontent.com/56459297/106538860-f6de7680-6522-11eb-8098-10229b182fec.jpg)
 
  
  
