@@ -45,6 +45,6 @@ chmod +x ravana.sh
 [YouTube channel](https://m.youtube.com/c/Princeweb "prince web")
 ## Follow me on Instagram 
 [Instagram](https://Instagram.com/sirprincekrvert)
-### English pdf version found download here
+### English pdf Download here--
 [PDF](http://www.mediafire.com/file/rgoq0g9yjwytm42/Ravana.docx/file)
 
