@@ -31,13 +31,9 @@ chmod +x ravana.sh
  
  
 ## WARNING :-THIS TOOL IS MADE ONLY FOR EDUCATIONAL PURPOSES
- 
- 
- 
 
-![20210202_064927](https://user-images.githubusercontent.com/56459297/106538860-f6de7680-6522-11eb-8098-10229b182fec.jpg)
 
- 
+![20210205_184422](https://user-images.githubusercontent.com/56459297/107038291-4e5e3a00-67e2-11eb-8454-3bed0d30577a.jpg)
  
  
 ### PLEASE SUBSCRIBE MY YOUTUBE CHANNEL
