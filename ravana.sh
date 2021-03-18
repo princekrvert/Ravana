@@ -178,7 +178,7 @@ banner(){
    ██   ██ ██   ██  ██  ██  ██   ██ ██  ██ ██ ██   ██ 
    ██   ██ ██   ██   ████   ██   ██ ██   ████ ██   ██
                       ::${y}V_2.3         
-	  \e[41;1m Made by PrinceWeb\e[40;1m(Prince kumar)\e[0;1m                                                 
+	        \e[40;1mPrince kumar\e[0;1m                                                 
 
 "
 }
