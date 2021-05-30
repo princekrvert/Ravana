@@ -50,7 +50,7 @@ s_ngrok(){
 		echo -e "${r}[${w}+${r}] ${g} Downloding ngrok "
 		#wget https://bin.equinox.io/a/4hREUYJSmzd/ngrok-2.2.8-linux-386.zip > /dev/null 2>&1
 		if [[ -e ngrok-stable-linux-arm.zip ]];then
-			unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
+			#unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
 			rm -rf ngrok-2.2.8-linux-386.zip
 			chmod +x *
 		else
