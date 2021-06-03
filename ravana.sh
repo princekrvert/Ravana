@@ -46,18 +46,12 @@ s_ngrok(){
 	echo -e " "
 	if [[ -e ngrok ]];then
 		echo -e "${r}[${w}+${r}] ${g} Turn on your hotspot "
+		chmod +x ngrok
 
 	else
 		echo -e "${r}[${w}+${r}] ${g} Downloding ngrok "
 		#wget https://bin.equinox.io/a/4hREUYJSmzd/ngrok-2.2.8-linux-386.zip > /dev/null 2>&1
-		if [[ -e ngrok-stable-linux-arm.zip ]];then
-			#unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
-			rm -rf ngrok-2.2.8-linux-386.zip
-			chmod +x *
-		else
-			chmod +x ngrok
-		#	echo -e "${r} Error Please try again"
-		fi
+		#unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
 	fi
 	ran=$((RANDOM % 10))
 	php -S 127.0.0.1:800$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 2
