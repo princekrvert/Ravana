@@ -38,7 +38,7 @@ chmod +x ravana.sh
  
 ### PLEASE SUBSCRIBE MY YOUTUBE CHANNEL
 --- 
-[YouTube channel](https://m.youtube.com/c/Princeweb "prince web")
+[YouTube channel](https://youtube.com/channel/UCiplAqC9AwtGGxXU3WQy8pw "MAD MIND")
 ## Follow me on Instagram 
 [Instagram](https://Instagram.com/sirprincekrvert)
 ### English pdf Download here--
