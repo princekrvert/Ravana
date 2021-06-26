@@ -7,7 +7,7 @@
 ![Size of the Ravana](https://img.shields.io/github/languages/code-size/princekrvert/Ravana?color=%2300ff&label=Ravana&style=for-the-badge)
 
  # SOCIAL MEDIA PHISHING TOOL FOR TERMUX
- ![98886108-5ba4aa80-24b9-11eb-8f03-9cc7d263ab72](https://user-images.githubusercontent.com/56459297/100311448-d00d3c80-2fd5-11eb-9f28-668055b3ea4d.jpg)
+ ![20210626_140401](https://user-images.githubusercontent.com/56459297/123515302-79bfc380-d6b4-11eb-916f-88e06357c1f0.jpg)
 
 
  ***
