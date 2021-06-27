@@ -18,6 +18,13 @@ trap user_intrupt SIGINT
 trap user_intrupt SIGTSTP
 
 # make a function to catch signals...
+#Lets check for any update -----
+repoUpdate(){
+	
+	git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} Checking for update ...."
+	clear
+}
+repoUpdate #Update the repo
 user_intrupt(){
 	printf " \n ${w}\n"
 	printf " ${r}[${w}!${r}]---->>${p} Exiting Ravana2.0"
