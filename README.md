@@ -36,7 +36,7 @@ chmod +x ravana.sh
 ![20210205_184422](https://user-images.githubusercontent.com/56459297/107038291-4e5e3a00-67e2-11eb-8454-3bed0d30577a.jpg)
  
  
-### PLEASE SUBSCRIBE MY YOUTUBE CHANNEL
+
 --- 
 [YouTube channel](https://youtube.com/channel/UCiplAqC9AwtGGxXU3WQy8pw "MAD MIND")
 ## Follow me on Instagram 
