@@ -24,7 +24,7 @@ repoUpdate(){
 	git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} Checking for update ...."
 	clear
 }
-#Update the repo
+repoUpdat #Update the repo
 user_intrupt(){
 	printf " \n ${w}\n"
 	printf " ${r}[${w}!${r}]---->>${p} Exiting Ravana2.0"
