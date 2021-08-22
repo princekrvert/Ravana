@@ -24,7 +24,7 @@ repoUpdate(){
 	git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} Checking for update ...."
 	clear
 }
-repoUpdate #Update the repo
+#Update the repo
 user_intrupt(){
 	printf " \n ${w}\n"
 	printf " ${r}[${w}!${r}]---->>${p} Exiting Ravana2.0"
@@ -137,9 +137,22 @@ server(){
 about_me(){
 	echo " "
 	echo -e "${g}[${w}+${g}] ${y} I am prince kumar amd i am a junior mechanical engineer.\n"
-	echo -e "${g}[${w}+${g}] ${p} Youtube https://m.youtube.com/c/Princeweb\n"
-	echo -e "${g}[${w}+${g}] ${y} Instagram https://instagram.com/sirprincekrvert\n"
-	echo -e "${g}[${w}+${g}] ${r} Facebook https://m.facebook.com/Princekrvert"
+	echo -e "${g}[${w}01${g}] ${p} Youtube"
+	echo -e "${g}[${w}02${g}] ${p} Instagram "
+	echo -e "${g}[${w}03${g}] ${p} Facebook"
+	echo -e "${r} Choose 🤜 "
+	read ab_optn
+	if [[ $ab_optn == "01" || $ab_optn == "1" ]];then
+		am start -a android.intent.action.VIEW -d https://bit.ly/3sAFWqM > /dev/null 2>&1
+	elif [[ $ab_optn == "02" || $ab_optn == "2" ]];then
+		am start -a android.intent.action.VIEW -d https://bit.ly/3j6pdIU > /dev/null 2>&1
+	elif [[ $ab_optn == "03" || $ab_optn == "3" ]];then
+		am start -a android.intent.action.VIEW -d https://bit.ly/3z49Eaa > /dev/null 2>&1
+	else 
+		echo -e "${r} Invalid option 🥵 "
+fi
+
+
 
 }
 
