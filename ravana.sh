@@ -23,8 +23,7 @@ repoUpdate(){
 	
 	git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} Checking for update ...."
 	clear
-}
-repoUpdat #Update the repo
+} #Update the repo
 user_intrupt(){
 	printf " \n ${w}\n"
 	printf " ${r}[${w}!${r}]---->>${p} Exiting Ravana2.0"
@@ -185,16 +184,13 @@ trap user_intrupt
 banner(){
 	clear
 	
-	printf "\n ${g}"
+	printf "\n ${r}"
 	printf "
-
-   ██████   █████  ██    ██  █████  ███    ██  █████ 
-   ██   ██ ██   ██ ██    ██ ██   ██ ████   ██ ██   ██ 
-   ██████  ███████ ██    ██ ███████ ██ ██  ██ ███████ 
-   ██   ██ ██   ██  ██  ██  ██   ██ ██  ██ ██ ██   ██ 
-   ██   ██ ██   ██   ████   ██   ██ ██   ████ ██   ██
-                      ::${y}V_2.3         
-	        \e[40;1m made by Prince kumar\e[0;1m                                                 
+	        
+       ╦═╗╔═╗╦  ╦╔═╗╔╗╔╔═╗
+       ╠╦╝╠═╣╚╗╔╝╠═╣║║║╠═╣ \e[32;1m MADE BY PRINCE
+       ╩╚═╩ ╩ ╚╝ ╩ ╩╝╚╝╩ ╩  \e[0;1m 
+       Youtube : https://is.gd/UQreTd                                              
 
 "
 }
