@@ -6,7 +6,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/princekrvert/Ravana?color=%23bb&label=Ravana_Star&style=for-the-badge)
 ![Size of the Ravana](https://img.shields.io/github/languages/code-size/princekrvert/Ravana?color=%2300ff&label=Ravana&style=for-the-badge)
 
- # SOCIAL MEDIA PHISHING TOOL FOR TERMUX
+ # PHISHING TOOL 
  ![20210626_140401](https://user-images.githubusercontent.com/56459297/123515302-79bfc380-d6b4-11eb-916f-88e06357c1f0.jpg)
 
 
