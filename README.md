@@ -24,11 +24,6 @@
  
 ## WARNING :-THIS TOOL IS MADE ONLY FOR EDUCATIONAL PURPOSES
 
-
-![20210205_184422](https://user-images.githubusercontent.com/56459297/107038291-4e5e3a00-67e2-11eb-8454-3bed0d30577a.jpg)
- 
- ### PLEASE SUBSCRIBE MY YOUTUBE CHANNEL
-
 --- 
  <a href="https://www.instagram.com/princekrvert/"> <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"></a>
 <a href="https://m.twitter.com/princekrvert" > <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"> </a>
