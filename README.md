@@ -12,16 +12,14 @@
   cloudflare link forwoding 
 ```
  
-> *git clone https://github.com/princekrvert/Ravana.git
+*`git clone https://github.com/princekrvert/Ravana.git`
  
  
-> *cd Ravana
+*`cd Ravana`
  
+ *`chmod +x ravana.sh`
  
-> *chmod +x ravana.sh
- 
-  
-.> */ravana.sh
+*`/ravana.sh`
  
  
 ## WARNING :-THIS TOOL IS MADE ONLY FOR EDUCATIONAL PURPOSES
