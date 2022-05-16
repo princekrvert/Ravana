@@ -58,7 +58,6 @@ start_cloud(){
     sleep 3 && ./cloudflare tunnel -url http://127.0.0.1:800$ran --logfile .pk.txt > /dev/null 2>&1 & 
     fi
     # now extract the link from the logfile .. 
-    echo "http://127.0.0.1:800$ran"
     sleep 8
     clear
     banner
@@ -115,12 +114,30 @@ s_ngrok(){
 
 }
 #End of ngrok function------
-
+# make a function to update the tool
+updateme(){
+    echo -e "\e[31;1m Checking version of the tool ...."
+    version=$(curl -s https://raw.githubusercontent.com/princekrvert/Ravana/main/version)
+    if [[ $version == 2.5.0 ]];then
+    echo " "
+    else
+    echo -e "\e[92;1m[~] New version of ravana found... "
+	echo -ne "\e[32;1m Press y to update: "
+	read up
+	if [[ ( $up == "y") || ( $up == "Y") ]];then
+	echo -ne "Updating ravana please wait..."
+    git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} wait..."
+	echo "updated sucessfully "
+	else 
+	echo ""
+	fi
+    fi
+	
+}
 
 #Make a localhost server-----------------------------
 s_localhost(){
 	#start localhost
-	kill_process
 	echo -e "\n"
 	echo -e "${g}[${r}~${g}] ${w} Port selection "
 	echo -e "\n"
@@ -184,8 +201,16 @@ server(){
 }
 #Make a function for Author information --------------
 about_me(){
+	h_os=$(uname -o)
+	if [[( $h_os == "GNU/Linux" )]];then
+	echo ""
+	echo -e "${g}[${w}+${g}] ${y} I am prince kumar and i am a junior mechanical engineer.\n"
+	echo -e "${g}[${w}01${g}] ${p} Youtube: https://bit.ly/3sAFWqM "
+	echo -e "${g}[${w}02${g}] ${p} Instagram: https://bit.ly/3j6pdIU "
+	echo -e "${g}[${w}03${g}] ${p} Facebook: https://bit.ly/3z49Eaa "
+	else
 	echo " "
-	echo -e "${g}[${w}+${g}] ${y} I am prince kumar amd i am a junior mechanical engineer.\n"
+	echo -e "${g}[${w}+${g}] ${y} I am prince kumar and i am a junior mechanical engineer.\n"
 	echo -e "${g}[${w}01${g}] ${p} Youtube"
 	echo -e "${g}[${w}02${g}] ${p} Instagram "
 	echo -e "${g}[${w}03${g}] ${p} Facebook"
@@ -200,18 +225,24 @@ about_me(){
 	else 
 		echo -e "${r} Invalid option 🥵 "
 fi
+fi
 
 
 
 }
 
-
-
-
-
 # Make a function for checking for requirements...---
 req_m(){
 	printf "${r}_______ ${p} checking for requirements ${r}_______\n"
+	# CHECK if this is termux or not 
+	if [[ -d "/data/data/com.termux/files/home" ]];then
+	if [[ `command -v proot` ]];then 
+	echo ""
+	else
+	echo -e "${g}+++++${y}Installing proot${g}+++++" 
+	 pkg install proot resolv-conf -y
+	 fi
+	 fi
 	command -v php 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing php${g}+++++" ; apt-get install php -y; }
 	command -v curl 2>&1 > /dev/null || { echo -e  "${g}+++++${y}Installing curl${g}+++++" ; apt-get install curl -y ; }
     command -v unzip 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing unzip${g}+++++" ; apt-get install unzip -y ;}
@@ -219,6 +250,7 @@ req_m(){
  }
 # calling req function
 req_m
+
 # make a typewriter for ravana2.0
 type_W(){
 	text=( 'S' 't' 'a' 'r' 't' 'i' 'n' 'g' ' ' 'R' 'a' 'v' 'a' 'n' 'a' )
