@@ -1,7 +1,7 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/usr/bin/bash
 #@Author prince kumar
 #Date 23 dec 2020
-# Version V1.0
+# Version V2.5.0
 #This is made only for educational purposes...
 # Satrt coding here
 # Define some color coding here
