@@ -29,5 +29,6 @@
 <a href="https://www.facebook.com/princekrvert" > <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" ></a>
 ### English pdf Download here--
 [PDF](http://www.mediafire.com/file/rgoq0g9yjwytm42/Ravana.docx/file)
-[Ravana 2.5 ] (https://is.gd/ZfEPvA)
+
+[Ravana 2.5](https://is.gd/ZfEPvA)
 
