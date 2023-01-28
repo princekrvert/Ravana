@@ -28,6 +28,15 @@ user_intrupt(){
 	exit 1
 }
 # make a function to update the ravana if any update is availble 
+# check for indian  ip 
+is_indian(){
+	count=$(curl -s http://ip-api.com/json/ | grep -c "India" )
+	if [[ $count == 1 ]];then
+	return "true"
+	else
+	return "false"
+	fi
+}
 up_date(){
 	echo -ne ""
 	curl https://raw.githubusercontent.com/princekrvert/Ravana/master/version --output vs > /dev/null 2>&1
@@ -233,7 +242,12 @@ req_m(){
  }
 # calling req function
 req_m
+count=$(curl -s http://ip-api.com/json/ | grep -c "India" )
+if [[ $count == 1 ]];then
+echo -en "\033[0;1mYou are in india so update this script manually if require..\n"
+else
 up_date
+fi
 # make a typewriter for ravana2.0
 type_W(){
 	text=( 'S' 't' 'a' 'r' 't' 'i' 'n' 'g' ' ' 'R' 'a' 'v' 'a' 'n' 'a' )
