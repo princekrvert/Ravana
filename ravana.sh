@@ -269,7 +269,7 @@ banner(){
        ╦═╗╔═╗╦  ╦╔═╗╔╗╔╔═╗
        ╠╦╝╠═╣╚╗╔╝╠═╣║║║╠═╣ \e[0;1m MADE BY PRINCE
        ╩╚═╩ ╩ ╚╝ ╩ ╩╝╚╝╩ ╩  V3.0.0\e[32;1m 
-       Youtube : https://is.gd/UQreTd                                              
+       Instagram : https://tinyurl.com/7fp4c26y                                              
 
 "
 }
