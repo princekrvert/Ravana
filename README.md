@@ -18,7 +18,7 @@
  
  *`chmod +x ravana.sh`
  
-*`/ravana.sh`
+*`./ravana.sh`
  
 ## WARNING :-THIS TOOL IS MADE ONLY FOR EDUCATIONAL PURPOSES
 
