@@ -50,6 +50,26 @@ up_date(){
 	fi 
 	rm -rf vs > /dev/null 
 }
+# make a function to download the logx tools.
+download_logx(){
+	if [[ -e ".server/loclx" ]]; then
+		echo -e "\033[32;1m  LocalXpose already installed."
+	else
+		echo -e "\033[31;1m Installing LocalXpose..."
+		# now check the os 
+	os=$(uname -m)
+		if [[ ("$os" == *'arm'*) || ("$os" == *'Android'*) ]]; then
+			wget 'https://api.localxpose.io/api/v2/downloads/loclx-linux-arm.zip' -O loclx
+		elif [[ "$os" == *'aarch64'* ]]; then
+			wget 'https://api.localxpose.io/api/v2/downloads/loclx-linux-arm64.zip' -O loclx
+		elif [[ "$os" == *'x86_64'* ]]; then
+			wget 'https://api.localxpose.io/api/v2/downloads/loclx-linux-amd64.zip' -O loclx
+		else
+			 wget 'https://api.localxpose.io/api/v2/downloads/loclx-linux-386.zip' -O loclx
+		fi
+	fi
+	
+}
 #Make a function to check for user data--------
 check_cred(){
 	while true;do
