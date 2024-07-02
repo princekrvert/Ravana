@@ -209,8 +209,7 @@ server(){
 about_me(){
 	h_os=$(uname -o)
 	if [[( $h_os == "GNU/Linux" )]];then
-	echo ""
-	echo -e "${g}[${w}+${g}] ${y} I am prince kumar and i am a junior mechanical engineer.\n"
+	echo -e "${g}[${w}+${g}] ${y} Hi there i am Prince Kumar, i am a junior mechanical engineer, currently i am writing a book called Termux hacker\n"
 	echo -e "${g}[${w}01${g}] ${p} Youtube: https://bit.ly/3sAFWqM "
 	echo -e "${g}[${w}02${g}] ${p} Instagram: https://is.gd/B8EytP "
 	echo -e "${g}[${w}03${g}] ${p} Facebook: https://bit.ly/3z49Eaa "
