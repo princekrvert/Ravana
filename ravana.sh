@@ -39,7 +39,7 @@ is_indian(){
 }
 up_date(){
 	echo -ne ""
-	curl https://raw.githubusercontent.com/princekrvert/Ravana/master/version --output vs > /dev/null 2>&1
+	gum spin --spinner dot --title "Getting info" -- curl https://raw.githubusercontent.com/princekrvert/Ravana/master/version --output vs > /dev/null 2>&1
 	ver=$(cat vs)
 	if [[ $ver == "V.3.0.0" ]];then
 	echo -ne ""
@@ -125,7 +125,7 @@ start_cloud(){
 }
 #make a function to download the cloudflared 
 download(){
-    wget --no-check-certificate $1 -O cloudflare
+    gum spin --spinner dot --title "Installing cloudflare" -- wget --no-check-certificate $1 -O cloudflare
     chmod +x cloudflare 
 }
 #first check the platform of the machine 
@@ -133,7 +133,6 @@ check_platform(){
 if [[ -e cloudflare ]];then
     echo -e "\e[36;1m[~] Cloudflared already installed ."
 else
-    echo -e "\e[32;1m Downloding coludflared"
     host=$(uname -m)
     if [[($host == "arm") || ($host == "Android")]];then
     download "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm"
@@ -247,6 +246,8 @@ req_m(){
 	printf "${r}_______ ${p} checking for requirements ${r}_______\n"
 	# CHECK if this is termux or not 
 	if [[ -d "/data/data/com.termux/files/home" ]];then
+	# now check if gum is installed or not 
+	command -v gum 2>&1 > /dev/null || { echo -e "installing gum"; pkg install gum -y ; }
 	if [[ `command -v proot` ]];then 
 	echo ""
 	else
@@ -258,6 +259,8 @@ req_m(){
 	command -v curl 2>&1 > /dev/null || { echo -e  "${g}+++++${y}Installing curl${g}+++++" ; apt-get install curl -y ; }
     command -v unzip 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing unzip${g}+++++" ; apt-get install unzip -y ;}
 	command -v wget 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing wget${g}+++++" ; apt-get install wget -y ; }
+	command -v gum 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing gum${g}+++++" ; sudo mkdir -p /etc/apt/keyrings; curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg;echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list;
+sudo apt update && sudo apt install gum;}
  }
 # calling req function
 req_m
