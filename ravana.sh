@@ -257,8 +257,7 @@ req_m(){
 	command -v curl 2>&1 > /dev/null || { echo -e  "${g}+++++${y}Installing curl${g}+++++" ; apt-get install curl -y ; }
     command -v unzip 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing unzip${g}+++++" ; apt-get install unzip -y ;}
 	command -v wget 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing wget${g}+++++" ; apt-get install wget -y ; }
-	command -v gum 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing gum${g}+++++" ; sudo mkdir -p /etc/apt/keyrings; curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg;echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list;
-sudo apt update && sudo apt install gum;}
+	command -v go 2>&1 > /dev/null || { echo -e "${g}+++++${y}Installing go${g}+++++" ; sudo mkdir -p /etc/apt/keyrings; curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo apt install golang ; go install github.com/charmbracelet/gum@latest;}
  }
 # calling req function
 req_m
