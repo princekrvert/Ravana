@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash 
 #@Author prince kumar
 #Date 23 dec 2020
 # Version V3.0.0
